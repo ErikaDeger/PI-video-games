@@ -2,29 +2,17 @@ const { Router, application } = require('express');
 const axios = require('axios')
 const { Videogames, Genres } = require('../db')
 const router = Router();
+const { APIKEY } = process.env
 
 
-router.get('/', (req, res, next) => {
-    axios.get()
-    Videogames.findAll({
-        include: Genres
-    })
+router.get('/', async (req, res, next) => {
+    const gamesApi = await gamesAll()
+    const gamesDb = await gameCreate()
+
+    let todos = [...gamesDb, ...gamesApi ];
+return res.send(todos)
 
 })
-
-
-// router.get('/', (req, res, next) => {
-//     return Videogames.findAll({
-//         include: Genres
-//     })
-//         .then((videogames) => {
-//             res.send(videogames)
-//         })
-// })
-//     .catch((error) => {
-//         next(error)
-//     })
-
 
 router.post('/', async (req, res, next) => {
     try {
@@ -68,8 +56,37 @@ router.delete('/', (req, res) => {
 })
 
 
+async function gamesAll(){
+    let gam1 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=10`);
+    let gam2 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=20`);
+    let gam3 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=30`);
+    let gam4 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=40`);
+    let gam5 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=50`);
+   
+    let games = await Promise.all([gam1, gam2, gam3, gam4, gam5])
 
+    games = games.map((el) => el.data.results);
 
+    games = [...games[0], ...games[1], ...games[2], ...games[3], ...games[4]];
+
+    games = games.map ((el)=>({
+        id: el.id,
+        name: el.name,
+        background_image: el.background_image,
+        genres: el.genres,
+        rating: el.rating,
+        released: el.released,
+        platforms: el.platforms.map((el)=> el.platform.name),
+    }));
+
+    return games;
+}
+async function gameCreate(){
+let games = await Videogames.findAll({
+   include: Genres, 
+});
+return games
+};
 
 
 

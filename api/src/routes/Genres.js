@@ -2,6 +2,9 @@ const { Router } = require('express');
 const router = Router();
 const { Genres } = require('../db')
 
+router.get('/prueba', async(req, res, next) => {
+    res.status(201).send("Funcionamos bien")
+})
 router.get('/', async(req, res, next) => {
     try{
         const genres = await Genres.findAll()

@@ -1,4 +1,0 @@
-DB_USER="postgres"
-DB_PASSWORD="281212"
-DB_HOST="localhost"
-APIKEY="12b6b3f404634f5eada0594aa3458d36"

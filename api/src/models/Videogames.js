@@ -18,8 +18,7 @@ module.exports = (sequelize) => {
     background_image: {
       type: DataTypes.TEXT,
       allowNull: false,
-      defaultValue: null,
-    },
+     },
 
     description: {
       type: DataTypes.TEXT,
