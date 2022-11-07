@@ -1,0 +1,39 @@
+.paginado-container {  
+    position: relative;
+    height: 10vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+   }  
+   .paginado-container .paginado-pagination {  
+    position: center;  
+    height: 60px;  
+    background: #fa844d6b;     
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    backdrop-filter: blur(3px);  /*/trasparencia /*/
+    border-radius: 10px;  
+    padding: 0px;
+   }  
+   .paginado-container .paginado-pagination li {  
+    list-style-type: none;  
+    display: inline-block;  
+   }  
+   .paginado-container .paginado-pagination li a {  
+    position: center;  
+    padding: 25px 25px;  
+    text-decoration: none;  
+    color: rgb(7, 7, 7);  
+    font-weight: 500;  
+   }  
+   .paginado-container .paginado-pagination li a:hover,  
+   .paginado-container .paginado-pagination li.active a {  
+    background: rgb(255 35 35 / 65%);
+    color: rgb(243, 236, 236);  
+    border-radius: 10px;  
+   }

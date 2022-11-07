@@ -1,0 +1,30 @@
+.input_search{
+    background-color: rgb(240, 165, 80);
+    width: 264px;
+    height: auto;
+    color: #00000073;
+    border: solid;
+    background: rgb(240 165 80);
+    padding: 7px;
+   }
+
+   .button_search{
+    background-color: #0000;
+    border: 0px;
+   }
+
+   .honguito{
+    width: 60px;
+    height: auto;
+    padding: 7px;
+    margin-top: 3px;
+   }
+
+   .form_search{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+   }

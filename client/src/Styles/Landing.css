@@ -1,0 +1,51 @@
+.container{
+    background-image: url("https://media.rawg.io/media/games/655/655977041d1fcd25a71a54727b93bb2f.jpg");
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.myButton {
+	box-shadow: -2px 12px 37px -3px #d61ac9;
+	background:linear-gradient(to bottom, #f52594 5%, #997b40 100%);
+	background-color:#f52594;
+	border-radius:38px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:16px 66px;
+	text-decoration:none;
+	text-shadow:1px 1px 23px #573d46;
+	
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #997b40 5%, #f52594 100%);
+	background-color:#997b40;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+@media (max-width: 550px) {
+   .container{
+    background-image: url("https://i.pinimg.com/736x/84/47/f9/8447f93280ab0bab0951dd429d45cb6c.jpg");
+   }
+
+}
+
+a{
+    color: #fff;
+    text-decoration: blink;
+}
