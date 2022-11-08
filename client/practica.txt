@@ -1,0 +1,71 @@
+export function getAllGames() {
+    return function (dispatch) { 
+            return let { data } = fetch ("/videogames")
+            .then(res => res.json())                            PROMESA
+            .then(res => {
+                dispatch({
+                    type: ALL_GAMES,
+                    payload: res
+                })
+            })
+    }
+}
+------------------------------------------------------------------------------------------
+export const getAllGames = () => {
+  return async (dispatch) => {
+    let { data } = await axios.get("/videogames");
+    dispatch({                                                       ASYNC AWAIT
+      type: ALL_GAMES,
+      payload: data,
+    });
+  };
+};
+------------------------------------------------------------------------------------------------
+METODO DELETE 
+------------------------------
+
+<button onClick={()=>handleOnClick(id)}>DELETE</button>
+
+let handleOnClick = (id) => {
+ dispatch(deleteVideogames(id))}
+
+
+export const deleteVideogames = (id) => {
+  return async (dispatch) => {
+    let { data } = await axios.delete(`/videogames/${id}`);
+    dispatch({
+      type: DELETE_VIDEOGAMES,
+      payload: data,
+    });
+  };
+};
+
+router.delete("/:id", async (req, res) => {
+  try {
+    let id= req.params.id;
+    await Videogames.destroy({
+      where:{
+        id
+      }
+    })
+
+    res.status(200).send('El videojuego fue eliminado con exito')
+  } catch (error) {
+    res.status(400).send('Eliminacion fallida!!')
+  }
+});
+
+
+export default function reducer(state = inicialState, action) {
+    switch (action.type) {
+         case DELETE:
+return{
+    ...state,
+    mensaje: action.payload
+}
+
+FILTRO NUEVO
+---------------------------------------
+<h4>Rating</h4>
+<h4>⭐{ele.rating}</h4>
+

@@ -116,9 +116,9 @@ const myPaginado = (pageNumber) => {
   <div className="card" key = {ele.id}>
 <a href = {`/detail/${ele.id}`}>
 <h2>{ele.name}</h2>
-<h4>Genres</h4>
+<h3>Genres</h3>
 <div>{ele.Genres.map((e)=><label className="genreItems" key= {e.name} > {e.name} </label> )}</div>
-<h4>⭐{ele.rating}</h4>
+
 
 <img className="styleGamesImg" src={ele.background_image}alt= "Img Games" />
 </a>

@@ -1,6 +1,7 @@
 const { Router} = require("express");
 const axios = require("axios");
 const { Videogames, Genres } = require("../db");
+const db = require("../db");
 const router = Router();
 const { APIKEY } = process.env;
 
@@ -11,6 +12,21 @@ router.get("/", async (req, res) => {
 
   let todos = [...gamesDb, ...gamesApi];
   return res.send(todos);
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    let id= req.params.id;
+    await Videogames.destroy({
+      where:{
+        id
+      }
+    })
+
+    res.status(200).send('El videojuego fue eliminado con exito')
+  } catch (error) {
+    res.status(400).send('Eliminacion fallida!!')
+  }
 });
 
 // await axios.get('http:localhost:3001/videogames/search?name=${variablename})
@@ -67,6 +83,8 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 // await axios.post('http:localhost:3001/videogames',{objbody})
 router.post("/", async (req, res, next) => {
@@ -133,5 +151,10 @@ async function gameCreate() {
   });
   return games;
 }
+
+
+      
+    
+  
 
 module.exports = router;

@@ -38,19 +38,19 @@ const Form = () => {
     }else{
       
       setGame({ ...game, genres: game.genres.filter((e)=>e !== event.target.value) });
-      setController(validate({ ...game, genres: [...game.genres, event.target.value] }))
+      setController(validate({ ...game, genres: game.genres.filter((e)=>e !== event.target.value) }))
     }
   };
   const handleOnplatForms = function (event) {
     
-    if(!game.platForms.find((e) => e === event.target.value )){
+    if(game.platForms.length < 5 && !game.platForms.find((e) => e === event.target.value )){
       
       setGame({ ...game, platForms: [...game.platForms, event.target.value] });
       setController(validate({ ...game, platForms: [...game.platForms, event.target.value] }))
     }else{
       
       setGame({ ...game, platForms: game.platForms.filter((e)=>e !== event.target.value) });
-      setController(validate({ ...game, platForms: [...game.platForms, event.target.value] }))
+      setController(validate({ ...game, platForms: game.platForms.filter((e)=>e !== event.target.value) }))
     }
 
   };
@@ -119,6 +119,7 @@ const Form = () => {
         {controller.released &&( <p>{controller.released}</p> )}
 
         <label htmlFor="rating">RATING</label>
+        <div className="rating">
         <input
         className="filtros"
         type="range"
@@ -129,10 +130,13 @@ const Form = () => {
         value={game.rating}
         onChange={handleOnChange}
         />
-        <label>{game.rating} </label>
+
+          <label>{game.rating} </label>
+        </div>
         {controller.rating &&( <p>{controller.rating}</p> )}
 
         <label htmlFor="genres">GENRES</label>
+        <p>Max required 3</p>
         <select
           className="filtros"
           key={"genres"}
@@ -165,6 +169,7 @@ const Form = () => {
                 {controller.genres &&( <p>{controller.genres}</p> )}
 
         <label htmlFor="platForms">platForms</label>
+        <p>Max required 5</p>
         <select className="filtros" type="text" name="platForms" onChange={handleOnplatForms}>
           <option value="Android">Android</option>
           <option value="Dreamcast">Dreamcast</option>
@@ -203,7 +208,8 @@ const Form = () => {
         ))}
         </div>
 
-        {controller.platForms &&( <p>{controller.platForms}</p> )}
+        {controller.platForms?.length && ( <p>{controller.platForms}</p> )}
+        
 
         <button className="myButton" type="submit">
           CREATE
@@ -253,13 +259,13 @@ function validate(game) {
   //platForms
   if (!game.platForms || game.platForms.legth < 1) {
     controller.platForms = "The platforms are required";
-  } else if (game.platForms.length > 5) {
+  } else if (game.platForms.length >= 6) {
     controller.genres = "5 platforms at most";
   }
   //genres
   if (!game.genres) {
     controller.genres = "The genre is required";
-  } else if (game.genres.length > 3) {
+  } else if (game.genres.length > 4) {
     controller.genres = "3 genres at most";
   }
 

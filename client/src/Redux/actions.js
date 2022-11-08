@@ -10,6 +10,7 @@ import {
   FILTER_BY_ALLVIDEOGAMES,
   FILTER_BY_ORDER,
   CREATE_VIDEOGAMES,
+  DELETE_VIDEOGAMES,
 
 } from "./actionsTypes";
 
@@ -18,6 +19,15 @@ export const getAllGames = () => {
     let { data } = await axios.get("/videogames");
     dispatch({
       type: ALL_GAMES,
+      payload: data,
+    });
+  };
+};
+export const deleteVideogames = (id) => {
+  return async (dispatch) => {
+    let { data } = await axios.delete(`/videogames/${id}`);
+    dispatch({
+      type: DELETE_VIDEOGAMES,
       payload: data,
     });
   };
@@ -95,6 +105,7 @@ export const createVideogames = (videogame) => {
     });
   };
 };
+
 
 
 

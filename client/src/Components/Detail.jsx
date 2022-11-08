@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getDetail } from '../Redux/actions'
+import { deleteVideogames, getDetail } from '../Redux/actions'
 import '../Styles/Detail.css'
 
 const Detail = () => {
@@ -15,6 +15,7 @@ const Detail = () => {
   }, [])
   
 let details = useSelector((state) => state.gamesDetails)
+let mensaje = useSelector((state) => state.mensaje)
 
 // console.log(details)
 /*
@@ -29,6 +30,13 @@ let details = useSelector((state) => state.gamesDetails)
         genres: data.genres,
       }
 */
+ let handleOnClick = (id) => {
+ dispatch(deleteVideogames(id))
+setTimeout(
+()=>{ window.location.href="http://localhost:3000/home" },2000
+)
+}
+
   return (
     <div>
   <a href="/home">
@@ -36,6 +44,9 @@ let details = useSelector((state) => state.gamesDetails)
           Home
       </button>
           </a>
+
+
+
 {Object.keys(details).length > 0 ?
  <div  className='containerDetail'>
   <img className='imgDetail' src= {details.background_image} alt= "img games"/>
@@ -72,6 +83,9 @@ let details = useSelector((state) => state.gamesDetails)
 
     </div>
 <p> {details.description} </p>
+
+{mensaje && <h1> {mensaje} </h1>}
+{ Number(id)!= id? <button className='myButton2' onClick={()=>handleOnClick(id)}>DELETE</button> : null}
 
  </div> 
 

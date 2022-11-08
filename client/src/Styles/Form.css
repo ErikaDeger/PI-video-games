@@ -9,7 +9,7 @@
 }
 .formContainer{
     background-image: url('https://media.revistagq.com/photos/613f011855410d2ed6954ee7/16:9/w_2560%2Cc_limit/2445034.jpg');
-    height: 100vh;
+    height: 115vh;
     background-size: contain;
     display: flex;
     flex-direction: column;
@@ -17,4 +17,7 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+}
+.rating{
+    display: flex;
 }

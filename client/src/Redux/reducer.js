@@ -8,15 +8,15 @@ import {
   ALL_GENRES,
   FILTER_BY_GENRES,
   FILTER_BY_ALLVIDEOGAMES,
-  } 
-  
- from "./actionsTypes";
+  DELETE_VIDEOGAMES,
+} from "./actionsTypes";
 
 const inicialState = {
   actionsState: [],
   allGames: [],
   gamesDetails: {},
   genres: [],
+  mensaje: "",
 };
 
 export default function reducer(state = inicialState, action) {
@@ -38,6 +38,12 @@ export default function reducer(state = inicialState, action) {
         ...state,
         genres: action.payload,
       };
+
+    case DELETE_VIDEOGAMES:
+      return {
+        ...state,
+        mensaje: action.payload,
+      };
     case SEARCH_BY_ID:
       return {
         ...state,
@@ -50,6 +56,7 @@ export default function reducer(state = inicialState, action) {
           ele.name.toLowerCase().includes(action.payload.toLowerCase())
         ),
       };
+
     case FILTER_BY_GENRES:
       return {
         ...state,
