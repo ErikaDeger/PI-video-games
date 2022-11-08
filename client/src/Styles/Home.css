@@ -1,7 +1,8 @@
 .styleGamesImg{
-    width: auto;
-    max-height: 25vh;
+    width: 80%;
+    max-height: auto;
     border-radius: 10%;
+
 }
 
 .allCards{
@@ -33,4 +34,9 @@
 
 .card a {
     color: #030303;
+}
+.genreItems{
+    background-color: wheat;
+    margin: 2px;
+    border-radius: 5px;
 }

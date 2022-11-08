@@ -91,7 +91,9 @@ router.post("/", async (req, res, next) => {
       platForms,
       gameCreate,
     });
-    await newVideogames.addGenres(genres);
+    let gens = await Genres.findAll({where : {name:genres}  })
+    gens = gens.map((e)=> e.id )
+    await newVideogames.addGenres(gens);
 
     res.status(201).send(newVideogames);
   } catch (error) {
@@ -100,11 +102,11 @@ router.post("/", async (req, res, next) => {
 });
 
 async function gamesAll() {
-  let gam1 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=6`);
-  let gam2 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=7`);
-  let gam3 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=8`);
-  let gam4 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=9`);
-  let gam5 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=10`);
+  let gam1 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=1`);
+  let gam2 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=2`);
+  let gam3 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=3`);
+  let gam4 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=4`);
+  let gam5 = axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=5`);
 
   let games = await Promise.all([gam1, gam2, gam3, gam4, gam5]);
 

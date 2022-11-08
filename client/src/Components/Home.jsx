@@ -62,7 +62,7 @@ const myPaginado = (pageNumber) => {
   return <div>
      <div>
 <select className="filtros" key= {"genres"} onChange ={(event)=> handleOnGenres(event)} >
-  <option value="ALL">Genres</option>
+  <option value="ALL">GENRES</option>
   {genres.length &&
 						genres.map((e) => (
 							<option key={e.name} value={e.name}>
@@ -96,7 +96,7 @@ const myPaginado = (pageNumber) => {
   
 </select>
 
-<a href='/form' ><button className="myButton">Create Videogame</button></a>
+<a href='/form' ><button className="myButton2">Create Videogame</button></a>
 
 
 <SearchBar setCurrentPage={
@@ -116,6 +116,10 @@ const myPaginado = (pageNumber) => {
   <div className="card" key = {ele.id}>
 <a href = {`/detail/${ele.id}`}>
 <h2>{ele.name}</h2>
+<h4>Genres</h4>
+<div>{ele.Genres.map((e)=><label className="genreItems" key= {e.name} > {e.name} </label> )}</div>
+<h4>⭐{ele.rating}</h4>
+
 <img className="styleGamesImg" src={ele.background_image}alt= "Img Games" />
 </a>
 </div>

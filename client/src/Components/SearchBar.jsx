@@ -28,7 +28,7 @@ setCurrentPage(1)
           onChange={handleOnChange}
           className="input_search"
           type="text"
-          placeholder="Search me..."
+          placeholder="Search a game and git Goomba!👉 "
         />
         <button type="submit" className="button_search">
          

@@ -1,11 +1,13 @@
 .input_search{
-    background-color: rgb(240, 165, 80);
+    background-color: #030303;
     width: 264px;
     height: auto;
-    color: #00000073;
-    border: solid;
-    background: rgb(240 165 80);
+    color: #030303;
+    border: 2px solid #000;
+    background: #f19888;;
     padding: 7px;
+    font-size: unset;
+    font-family: cursive;
    }
 
    .button_search{
@@ -18,6 +20,7 @@
     height: auto;
     padding: 7px;
     margin-top: 3px;
+    box-shadow: inset 1px -1px 20px 3px rgb(255 98 72);
    }
 
    .form_search{
@@ -28,3 +31,28 @@
     justify-content: center;
     align-items: center;
    }
+
+   .filtros{
+    background-color: tomato;
+    font-size: medium;
+    width: 264px;
+    height: auto;
+    border: solid;
+    padding: 7px;
+   }
+   .myButton2{
+    box-shadow: -2px 12px 37px -3px #d61ac9;
+    background: linear-gradient(to bottom, #f52594 5%, #997b40 100%);
+    background-color: #f52594;
+    border-radius: 27px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: cursive;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 10px 50px;
+    text-decoration: none;
+    text-shadow: 1px 1px 23px #573d46;
+   }
+   
